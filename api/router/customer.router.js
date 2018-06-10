@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { getAllCustomers, getCustomer,
         addCustomer, updateCustomer,
-        deleteCustomer } = require('../controller/customer.controller');
+        deleteCustomer } = require('../controller/customers.controller');
 
 router.get('api/customers', getAllCustomers);  //  GET ALL CUSTOMERS
 router.get('api/customer/:id', getCustomer);  //  GET A SINGLE CUSTOMER

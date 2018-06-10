@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { getAllCart, getCart,
         addCart, updateCart,
-        deleteCart } = require('../controller/cart.controller')
+        deleteCart } = require('../controller/carts.controller')
 
 router.get('api/cart', getAllCart);  //  GET ALL CART
 router.get('api/cart/:id', getCart);  //  GET A SINGLE CART

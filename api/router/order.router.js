@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { getAllOrders, getOrder,
         addOrder, updateOrder,
-        deleteOrder } = require('../controller/order.controller')
+        deleteOrder } = require('../controller/orders.controller')
 
 router.get('api/orders', getAllOrders);  // GET ALL ORDERS
 router.get('api/order/:id', getOrder);  // GET A SINGLE ORDER

@@ -5,7 +5,7 @@ const router = express.Router();
 const { result } = require('../model/product.model');
 const { getProducts, getProduct,
         addProduct, updateProduct,
-        deleteProduct } = require('../controller/product.controller');
+        deleteProduct } = require('../controller/products.controller');
 
 /* MIDDLEWARE */
 // app.use(express.urlencoded({extended : true}));
