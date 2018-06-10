@@ -15,13 +15,13 @@ router.get('/api/products', getProducts);
 router.get('/api/products/:id', getProduct)
 
 /* SAVE PRODUCTS */
-router.post('/api/products', addProduct);
+router.post('/api/add_product', addProduct);
 
 /* UPDATE PRODUCTS */
-router.put('/api/products/:id', updateProduct);
+router.put('/api/update_product/:id', updateProduct);
 
 /* DELETE BOOK */
-router.delete('/api/products/:id', deleteProduct);
+router.delete('/api/delete_product/:id', deleteProduct);
 
 //   router.get('/api/prouducts/:id', function(req, res, next) {
 //     products.findById(req.params.id, function (err, result) {

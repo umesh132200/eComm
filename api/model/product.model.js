@@ -30,7 +30,7 @@ exports.getAllProducts = function(req, res, next) {
 
   /* ADD PRODUCTS */
   exports.addProduct = function(req, res, next) {
-  products.create(req.body, function (err, result) {
+    ProductModel.create(req.body, function (err, result) {
     if (err) return next(err);
     res.json(result);
   });
@@ -38,44 +38,19 @@ exports.getAllProducts = function(req, res, next) {
 
   /* UPDATE PRODUCTS */
   exports.updateProduct = function(req, res, next) {
-  products.findByIdAndUpdate(req.params.id, req.body, function (err, result) {
+    ProductModel.findByIdAndUpdate(req.params.id, req.body, function (err, result) {
     if (err) return next(err);
     res.json(result);
   });
  }
 
-  /* DELETE BOOK */
+  /* DELETE PRODUCTS */
   exports.deleteProduct = function(req, res, next) {
     ProductModel.findByIdAndRemove(req.params.id, req.body, function (err, result) {
     if (err) return next(err);
     res.json(result);
   });
   }
-
-  //exports.products = ProductModel;
-// //to save product in mongo
-// const saveProduct = new ProductModel({
-//   product: productData.product || faker.commerce.product(),
-//   color: productData.color ||faker.commerce.color(),
-//   productMaterial: productData.productMaterial ||faker.commerce.productMaterial(),
-//   price: productData.price || faker.commerce.price()
-// });
-
-// async function saveResult() {
-//     try{
-//       return await saveProduct.save();
-//     }
-//     catch(err) { console.log(err);}
-// }
-//  saveResult();//save product
-
-// //to get product from db
-//   async function getProduct() {
-//   return await ProductModel.find();
-  
-// }
-
-// const result = getProduct();
 
 
 
