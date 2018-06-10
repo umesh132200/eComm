@@ -28,7 +28,7 @@ exports.getAllProducts = function(req, res, next) {
       });
     }
 
-  /* ADD PRODUCTS */
+  /* ADD PRODUCT */
   exports.addProduct = function(req, res, next) {
     ProductModel.create(req.body, function (err, result) {
     if (err) return next(err);
@@ -36,7 +36,7 @@ exports.getAllProducts = function(req, res, next) {
   });
   }
 
-  /* UPDATE PRODUCTS */
+  /* UPDATE PRODUCT */
   exports.updateProduct = function(req, res, next) {
     ProductModel.findByIdAndUpdate(req.params.id, req.body, function (err, result) {
     if (err) return next(err);
@@ -44,9 +44,9 @@ exports.getAllProducts = function(req, res, next) {
   });
  }
 
-  /* DELETE PRODUCTS */
+  /* DELETE PRODUCT */
   exports.deleteProduct = function(req, res, next) {
-    ProductModel.findByIdAndRemove(req.params.id, req.body, function (err, result) {
+    ProductModel.findByIdAndRemove(req.params.id, function (err, result) {
     if (err) return next(err);
     res.json(result);
   });
