@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const app = express();
-const bodyParser = require('body-parser'); 
+// const app = express();
+// const bodyParser = require('body-parser'); 
 const { result } = require('../model/product.model');
 const { getProducts, getProduct,
         addProduct, updateProduct,
         deleteProduct } = require('../controller/product.controller');
 
 /* MIDDLEWARE */
-app.use(express.urlencoded({extended : true}));
-app.use(bodyParser());
+// app.use(express.urlencoded({extended : true}));
+// app.use(bodyParser());
 
 router.get('/api/products', getProducts);  // GET ALL PRODUCTS 
   
