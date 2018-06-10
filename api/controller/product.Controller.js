@@ -1,7 +1,10 @@
-const { getAllProducts, getProduct } = require('../model/product.model');
+const { getAllProducts, getProduct, addProduct, updateProduct, deleteProduct } = require('../model/product.model');
 
 exports.getProducts = getAllProducts;
 exports.getProduct = getProduct;
+exports.addProduct = addProduct;
+exports.updateProduct = updateProduct;
+exports.deleteProduct = deleteProduct;
 
 // /* GET ALL PRODUCTS */
 // function getAllProducts(){

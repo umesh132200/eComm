@@ -3,7 +3,7 @@ const router = express.Router();
 const app = express();
 const bodyParser = require('body-parser'); 
 const { result } = require('../model/product.model');
-const { getProducts, getProduct } = require('../controller/product.Controller');
+const { getProducts, getProduct, addProduct, updateProduct, deleteProduct } = require('../controller/product.Controller');
 
 app.use(express.urlencoded({extended : true}));
 app.use(bodyParser());
@@ -13,6 +13,16 @@ router.get('/api/products', getProducts);
   
   /* GET SINGLE PRODUCT BY ID */
 router.get('/api/products/:id', getProduct)
+
+/* SAVE PRODUCTS */
+router.post('/api/products', addProduct);
+
+/* UPDATE PRODUCTS */
+router.put('/api/products/:id', updateProduct);
+
+/* DELETE BOOK */
+router.delete('/api/products/:id', deleteProduct);
+
 //   router.get('/api/prouducts/:id', function(req, res, next) {
 //     products.findById(req.params.id, function (err, result) {
 //     if (err) return next(err);

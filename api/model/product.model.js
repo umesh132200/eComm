@@ -27,7 +27,32 @@ exports.getAllProducts = function(req, res, next) {
         res.json(result);
       });
     }
-//exports.products = ProductModel;
+
+  /* ADD PRODUCTS */
+  exports.addProduct = function(req, res, next) {
+  products.create(req.body, function (err, result) {
+    if (err) return next(err);
+    res.json(result);
+  });
+  }
+
+  /* UPDATE PRODUCTS */
+  exports.updateProduct = function(req, res, next) {
+  products.findByIdAndUpdate(req.params.id, req.body, function (err, result) {
+    if (err) return next(err);
+    res.json(result);
+  });
+ }
+
+  /* DELETE BOOK */
+  exports.deleteProduct = function(req, res, next) {
+    ProductModel.findByIdAndRemove(req.params.id, req.body, function (err, result) {
+    if (err) return next(err);
+    res.json(result);
+  });
+  }
+
+  //exports.products = ProductModel;
 // //to save product in mongo
 // const saveProduct = new ProductModel({
 //   product: productData.product || faker.commerce.product(),
@@ -53,45 +78,9 @@ exports.getAllProducts = function(req, res, next) {
 // const result = getProduct();
 
 
-/* GET ALL PRODUCTS */
-// function getAllProducts() {
-//   products.find(function (err, result) {
-//     if (err) return next(err);
-//     res.json(result);
-//  });
-// }
 
-/* GET SINGLE PRODUCT BY ID */
-function getProductById() {
-  products.findById(req.params.id, function (err, result) {
-    if (err) return next(err);
-    res.json(result);
-});
-}
 
-/* ADD PRODUCTS */
-function addProduct() {
-  products.create(req.body, function (err, result) {
-    if (err) return next(err);
-    res.json(result);
-  });
-}
 
-/* UPDATE PRODUCTS */
-function updateProduct(){
-  products.findByIdAndUpdate(req.params.id, req.body, function (err, result) {
-    if (err) return next(err);
-    res.json(result);
-  });
-}
-
-/* DELETE BOOK */
-function deleteProduct(){
-  products.findByIdAndRemove(req.params.id, req.body, function (err, result) {
-    if (err) return next(err);
-    res.json(result);
-  });
-}
 
 
 
