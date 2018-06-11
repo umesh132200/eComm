@@ -1,3 +1,7 @@
+require('express-async-errors');
+const error = require('./api/middleware/error');
+const winston = require('winston');
+require('winston-mongodb');
 const express = require('express');
 const app = express();
 const debug = require('debug');
@@ -8,6 +12,9 @@ const product = require('./api/router/product.router');
 const order = require('./api/router/order.router');
 const customer = require('./api/router/customer.router');
 const cart = require('./api/router/cart.router');
+
+winston.add(winston.transports.File, { filename: 'logger.js'});
+winston.add(winston.transports.MongoDB, {db: 'mongodb://localhost/logger'});
 
 //connect to mongodb
 mongoose.connect('mongodb://localhost/ecom')
@@ -23,7 +30,7 @@ app.use(product);
 app.use(order);
 app.use(customer);
 app.use(cart);
-
+app.use(error);
 
 //create server
 const port = process.env.PORT || 3000;
