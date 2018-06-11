@@ -30,12 +30,12 @@ process.on('unhandledRejection', (ex) => {
 winston.add(winston.transports.File, { filename: 'logger.log'});
 winston.add(winston.transports.MongoDB, {db: 'mongodb://localhost/logger', level: 'info'});
 
-const p = Promise.reject(new Error('something failed when startup')).then(console.log('done'));
+//const p = Promise.reject(new Error('something failed when startup')).then(console.log('done'));
 
 
 //connect to mongodb
 mongoose.connect('mongodb://localhost/ecom')
- .then(() => console.log('connected to mongodb'));
+ .then(() => winston.info('connected to mongodb'));
 
 
  //middileware
@@ -51,4 +51,4 @@ app.use(error);
 //create server
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => { console.log(`Server is listening at port: ${port}`);});
+app.listen(port, () => { winston.info(`Server is listening at port: ${port}`);});
