@@ -7,41 +7,31 @@ const customer = new mongoose.Schema({
 const customerModel = mongoose.model('customers', customer);
 
 /* GET ALL CUSTOMERS */
-exports.getAllCustomers = (req, res, next) => {
-    customerModel.find((err, result) => {
-    if(err) return next(err);
+exports.getAllCustomers = async (req, res) => {
+    const result = await customerModel.find();
     res.send(result);
-    });
 }
 
 /* GET A SINGLE CUSTOMER */
-exports.getCustomer = (req, res, next) => {
-    customerModel.findById(req.params.id, (err, result) => {
-        if(err) return next(err);
-        res.send(result);
-    });
+exports.getCustomer = async (req, res) => {
+    const result = await customerModel.findById(req.params.id);
+    res.send(result);
 }
 
 /* ADD NEW CUSTOMER */
-exports.addCustomer = (req, res, next) => {
-    customerModel.create(req.body, (err, result) => {
-        if(err) return next(err);
-        res.send(result);
-    });
+exports.addCustomer = async (req, res) => {
+    const result = await customerModel.create(req.body);
+    res.send(result); 
 }
 
 /* UPDATE CUSTOMER INFO */
-exports.updateCustomer = (req, res, next) => {
-    customerModel.findByIdAndUpdate(req.params.id, req.body, (err, result) => {
-        if(err) return next(err);
-        res.send(result);
-    });
+exports.updateCustomer = async (req, res) => {
+    const result = await customerModel.findByIdAndUpdate(req.params.id, req.body);
+    res.send(result);   
 }
 
 /* DELETE CUSTOMER */
-exports.deleteCustomer = (req, res, next) => {
-    customerModel.findByIdAndRemove(req.params.id, (err, result) => {
-        if(err) return next(err);
-        res.send(result);
-    });
+exports.deleteCustomer = async (req, res) => {
+    const result = await customerModel.findByIdAndRemove(req.params.id);;
+    res.send(result);
 }

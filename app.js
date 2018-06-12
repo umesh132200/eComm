@@ -30,9 +30,6 @@ process.on('unhandledRejection', (ex) => {
 winston.add(winston.transports.File, { filename: 'logger.log'});
 winston.add(winston.transports.MongoDB, {db: 'mongodb://localhost/logger', level: 'info'});
 
-//const p = Promise.reject(new Error('something failed when startup')).then(console.log('done'));
-
-
 //connect to mongodb
 mongoose.connect('mongodb://localhost/ecom')
  .then(() => winston.info('connected to mongodb'));

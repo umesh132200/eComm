@@ -16,40 +16,32 @@ const ProductModel = mongoose.model('product', productSchema);
 /* GET ALL PRODUCTS */
 exports.getAllProducts = async (req, res) => {
     const result = await ProductModel.find();
+   res.json(result);
+}
+
+/* GET SINGLE PRODUCT BY ID */
+exports.getProduct = async (req, res) => {
+    const result = await ProductModel.findById(req.params.id);
     res.json(result);
 }
 
-  /* GET SINGLE PRODUCT BY ID */
-  exports.getProduct = (req, res, next) => {
-    ProductModel.findById(req.params.id,  (err, result) => {
-        if (err) return next(err);
-        res.json(result);
-      });
-    }
-
-  /* ADD PRODUCT */
-  exports.addProduct = (req, res, next) => {
-    ProductModel.create(req.body, (err, result) => {
-    if (err) return next(err);
+/* ADD PRODUCT */
+exports.addProduct = async (req, res) => {
+    const result = await ProductModel.create(req.body);
     res.json(result);
-  });
-  }
+}
 
-  /* UPDATE PRODUCT */
-  exports.updateProduct = (req, res, next) => {
-    ProductModel.findByIdAndUpdate(req.params.id, req.body, (err, result) => {
-    if (err) return next(err);
+/* UPDATE PRODUCT */
+exports.updateProduct = async (req, res) => {
+    const result = await ProductModel.findByIdAndUpdate(req.params.id, req.body);
     res.json(result);
-  });
- }
+}
 
-  /* DELETE PRODUCT */
-  exports.deleteProduct = (req, res, next) => {
-    ProductModel.findByIdAndRemove(req.params.id, (err, result) => {
-    if (err) return next(err);
+/* DELETE PRODUCT */
+exports.deleteProduct = async (req, res) => {
+    const result = await ProductModel.findByIdAndRemove(req.params.id);
     res.json(result);
-  });
-  }
+}
 
 
 

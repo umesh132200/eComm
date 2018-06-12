@@ -7,42 +7,31 @@ const order = new mongoose.Schema({
 const OrderModel = mongoose.model('order', order);
 
 /* GET ALL ORDERS */
-exports.getAllOrders = (req, res, next) => {
-    OrderModel.find((err, result) => {
-        if(err) return next(err);
-        res.send(result);
-    });
+exports.getAllOrders = async (req, res) => {
+    const result = await rderModel.find();
+    res.send(result);
 }
 
 /* GET A SINGLE ORDER */
-exports.getOrder = (req, res, next) => {
-    OrderModel.findById(req.params.id, (err, result) => {
-        if(err) return next(err);
-        res.send(result);
-    });
+exports.getOrder = async (req, res) => {
+    const result = await OrderModel.findById(req.params.id);
+    res.send(result);
 }
 
 /* CREATE ORDER */
-exports.addOrder = (req, res, next) => {
-    OrderModel.create(req.body, (err, result) => {
-        if(err) return next(err);
-        res.send(result);
-    });
+exports.addOrder = async (req, res) => {
+    const result = await OrderModel.create(req.body);
+    res.send(result);
 }
 
 /* UPDATE ORDER */
-exports.updateOrder = (req, res, next) => {
-    OrderModel.findByIdAndUpdate(req.params.id, req.body, (err, result) => {
-        if(err) return next(err);
-        res.send(result);
-
-    });
+exports.updateOrder = async (req, res) => {
+    const result = await OrderModel.findByIdAndUpdate(req.params.id, req.body);
+    res.send(result);
 }
 
 /* DELETE ORDER */
-exports.deleteOrder = (req, res, next) => {
-    OrderModel.findByIdAndRemove(req.params.id, (err, result) => {
-      if(err) return next(err);
-      res.send(result);
-    });
+exports.deleteOrder = async (req, res) => {
+    const result = await OrderModel.findByIdAndRemove(req.params.id);
+    res.send(result);
 }
