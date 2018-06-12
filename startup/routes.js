@@ -1,5 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
+const winston = require('winston');
 const product = require('../api/router/product.router');
 const order = require('../api/router/order.router');
 const customer = require('../api/router/customer.router');
@@ -7,7 +8,10 @@ const cart = require('../api/router/cart.router');
 const error = require('../api/middleware/error');
 
 module.exports = (app) => {
- app.use(morgan('tiny'));
+ if(app.get('env') === 'development') {
+     app.use(morgan('tiny'));
+     winston.info('morgan enabled...');
+ }
  app.use(express.json());
  app.use(express.urlencoded({extended : true}));
  app.use(product);
