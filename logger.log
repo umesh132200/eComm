@@ -14,3 +14,19 @@
 {"level":"info","message":"Application name: eCommerce - Development","timestamp":"2018-06-15T12:31:57.837Z"}
 {"level":"info","message":"Server is listening at port: 3000","timestamp":"2018-06-15T12:31:57.842Z"}
 {"level":"info","message":"connected to mongodb","timestamp":"2018-06-15T12:31:57.901Z"}
+{"level":"info","message":"morgan enabled...","timestamp":"2018-06-15T12:43:46.039Z"}
+{"level":"info","message":"Application name: eCommerce - Development","timestamp":"2018-06-15T12:43:46.059Z"}
+{"level":"info","message":"Server is listening at port: 3000","timestamp":"2018-06-15T12:43:46.067Z"}
+{"level":"info","message":"connected to mongodb","timestamp":"2018-06-15T12:43:46.148Z"}
+{"level":"info","message":"morgan enabled...","timestamp":"2018-06-15T13:00:37.244Z"}
+{"level":"info","message":"Application name: eCommerce - Development","timestamp":"2018-06-15T13:00:37.265Z"}
+{"level":"info","message":"Server is listening at port: 3000","timestamp":"2018-06-15T13:00:37.273Z"}
+{"level":"info","message":"connected to mongodb","timestamp":"2018-06-15T13:00:37.345Z"}
+{"level":"info","message":"morgan enabled...","timestamp":"2018-06-15T19:00:30.366Z"}
+{"level":"info","message":"Application name: eCommerce - Development","timestamp":"2018-06-15T19:00:30.388Z"}
+{"level":"info","message":"Server is listening at port: 3000","timestamp":"2018-06-15T19:00:30.395Z"}
+{"level":"info","message":"connected to mongodb","timestamp":"2018-06-15T19:00:30.482Z"}
+{"level":"info","message":"morgan enabled...","timestamp":"2018-06-15T19:52:08.995Z"}
+{"level":"info","message":"Application name: eCommerce - Development","timestamp":"2018-06-15T19:52:09.012Z"}
+{"level":"info","message":"Server is listening at port: 3000","timestamp":"2018-06-15T19:52:09.019Z"}
+{"level":"info","message":"connected to mongodb","timestamp":"2018-06-15T19:52:09.154Z"}
