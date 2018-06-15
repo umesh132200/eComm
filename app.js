@@ -2,11 +2,15 @@ const winston = require('winston');
 const express = require('express');
 const app = express();
 const config = require('config');
+const path = require('path');
 
 /* STARTUP */
 require('./startup/logging')();  // LOGGING
 require('./startup/routes')(app);  // ALL ROUTES
 require('./startup/db')();  // CONNECTED TO MONGODB
+
+/* STATIC VIEW */
+app.use(express.static(path.join(__dirname, 'public')));
 
 winston.info(`Application name: ${config.get('name')}`);
 
