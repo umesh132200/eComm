@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const winston = require('winston');
+const cors = require('cors');
 const product = require('../api/router/product.router');
 const order = require('../api/router/order.router');
 const customer = require('../api/router/customer.router');
@@ -12,6 +13,7 @@ module.exports = (app) => {
      app.use(morgan('tiny'));
      winston.info('morgan enabled...');
  }
+ app.use(cors())
  app.use(express.json());
  app.use(express.urlencoded({extended : true}));
  app.use(product);
