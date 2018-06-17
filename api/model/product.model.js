@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
 const faker = require('faker');
 const productData = require('../router/product.router');
-
-
+ 
 //create schema for product
 const productSchema = new mongoose.Schema({
     product: String,
     color: String,
     productMaterial:String,
-    price: Number
+    price: Number,
+    photoRef:String
 });
 
 const ProductModel = mongoose.model('product', productSchema);
@@ -27,7 +27,15 @@ exports.getProduct = async (req, res) => {
 
 /* ADD PRODUCT */
 exports.addProduct = async (req, res) => {
-    const result = await ProductModel.create(req.body);
+    const result = await ProductModel.create(
+        {
+            product: req.body.product,
+            color: req.body.color,
+            productMaterial:req.body.productMaterial,
+            price: req.body.price,
+            photoRef: req.file.path
+            
+        });
     res.json(result);
 }
 

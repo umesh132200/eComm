@@ -13,7 +13,7 @@ module.exports = (app) => {
      app.use(morgan('tiny'));
      winston.info('morgan enabled...');
  }
- app.use(cors())
+ app.use(cors());
  app.use(express.json());
  app.use(express.urlencoded({extended : true}));
  app.use(product);
