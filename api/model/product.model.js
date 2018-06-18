@@ -65,7 +65,9 @@ exports.addProduct = (req, res) => {
                     color: req.body.color,
                     productMaterial:req.body.productMaterial,
                     price: req.body.price,
-                    productPhotos: req.files
+                    productPhotos: req.files.map( file => {
+                        return file.path;
+                    })
                     
                 });
             res.send('File uploaded'+result);
