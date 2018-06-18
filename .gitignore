@@ -1,6 +1,9 @@
 # dependencies
 /node_modules
 /public
+/uploadedFiles
+logger.log
+uncaught_unhandled_Exception.log
 
 #angular project ignore
 # compiled output
