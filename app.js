@@ -11,6 +11,7 @@ require('./startup/db')();  // CONNECTED TO MONGODB
 
 /* STATIC VIEW */
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/uploadedFiles', express.static('uploadedFiles'));
 
 winston.info(`Application name: ${config.get('name')}`);
 

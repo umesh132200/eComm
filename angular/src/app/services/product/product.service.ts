@@ -7,8 +7,19 @@ import { HttpClient } from '@angular/common/http';
 export class ProductService {
 
   constructor( private httpClient: HttpClient ) { }
-  result:any;
-   async getProducts() {
-     return this.result = await this.httpClient.get('http://localhost:3000/api/products').toPromise();
-   }
+ 
+  public getProducts(url:string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.httpClient.get(url)
+      .subscribe(
+        res => {
+          if(!res) {
+            reject(res);
+          }
+          resolve(res);
+        },
+        error => {}
+      )
+    }).catch(reason =>{});
+  }
 }

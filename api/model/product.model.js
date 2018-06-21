@@ -27,13 +27,16 @@ const upload = multer({
         limits: { fileSize: 1024*1024*5 },
         fileFilter: fileFilter        
         }).array('productPhotos', 4);
+// const upload = multer({dest: 'uploadedFiles/'}).array('productPhotos', 4);
 
 //create schema for product
 const productSchema = new mongoose.Schema({
     product: String,
     color: String,
     productMaterial:String,
+    quantity:Number,
     price: Number,
+    description: String,
     productPhotos: Array
 });
 
@@ -54,22 +57,27 @@ exports.getProduct = async (req, res) => {
 /* ADD PRODUCT */
 exports.addProduct = (req, res) => {
      upload(req, res, (err) => {
+        
         if(err) {
             return res.end('File upload error');
         } 
-            console.log(req.file);
+        console.log(req.files);
             (async () => {
+               
             const result = await ProductModel.create(
                 {
                     product: req.body.product,
                     color: req.body.color,
                     productMaterial:req.body.productMaterial,
+                    quantity: req.body.quantity,
                     price: req.body.price,
                     productPhotos: req.files.map( file => {
-                        return file.path;
-                    })
+                        return req.protocol + '://'+req.headers.host+"/"+file.path;
+                    }),
+                    description: req.body.description
                     
                 });
+                
             res.send('File uploaded'+result);
         })();}
     );    

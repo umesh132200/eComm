@@ -23,8 +23,8 @@ import { ProductService } from './services/product/product.service';
     HttpClientModule,
     BrowserModule,
     RouterModule.forRoot([
-      {path: '', redirectTo:'/content' , pathMatch: 'full' },
-      {path: 'content', component: ContentComponent}]
+      { path: '', redirectTo:'/content' , pathMatch: 'full' },
+      { path: 'content', component: ContentComponent }]
     
     )
   ],
