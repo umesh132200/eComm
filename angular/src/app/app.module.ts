@@ -1,34 +1,39 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { TopbarComponent } from './topbar/topbar.component';
-import { ContentComponent } from './content/content.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { RouterModule, Routes } from '@angular/router';
+import { ProductDetailComponent } from './product-list/product-detail/product-detail.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ProductListComponent } from './product-list/product-list.component';
 
-import { ProductService } from './services/product/product.service';
+import { AppRoutingModule } from "./app-routing.module";
+import { ProductListRouteModule } from './product-list/product-list-route.module';
+
+import { SafeTrustUrlPipe } from './pipes/safe-trust-url.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     TopbarComponent,
-    ContentComponent,
-    NavbarComponent
+    NavbarComponent,
+    SafeTrustUrlPipe,
+    ProductDetailComponent,
+    PageNotFoundComponent,
+    ProductListComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
-    RouterModule.forRoot([
-      { path: '', redirectTo:'/content' , pathMatch: 'full' },
-      { path: 'content', component: ContentComponent }]
-    
-    )
+    ProductListRouteModule,
+    AppRoutingModule
+   
   ],
-  providers: [ProductService],
+  providers: [  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
