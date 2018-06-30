@@ -1,18 +1,16 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductListComponent } from './product-list.component';
 import { ProductListService } from './product-list.service';
 
 const productListRoute:Routes = [
-  { path: 'product-list', component: ProductListComponent }
+  { path: 'product-list', component: ProductListComponent,
+    resolve:{ products:ProductListService }
+   }
 ]
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule.forRoot( productListRoute )
-  ],
-    providers: [ ProductListService ]
+  imports: [ RouterModule.forChild( productListRoute ) ],
+  exports: [ RouterModule ]
 })
 export class ProductListRouteModule { }

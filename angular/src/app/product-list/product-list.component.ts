@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductListService } from './product-list.service';
-import { HttpClient } from '@angular/common/http';
-import { DomSanitizer, SafeUrl, SafeResourceUrl } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -10,28 +9,28 @@ import { DomSanitizer, SafeUrl, SafeResourceUrl } from '@angular/platform-browse
 })
 export class ProductListComponent implements OnInit {
 
-  constructor(private products: ProductListService, private httpClient: HttpClient, private domSanitizer: DomSanitizer) { }
-
+  constructor(private products: ProductListService, private actRoute: ActivatedRoute) { }
+  
   productDetail:any;
   productImage1:any;
   productImage2:any;
   productDetails:any;
 
   getRender() {
-     this.products.getProducts('http://localhost:3000/api/products')
-     .then(
-       data => {
-         this.productDetail = data[0];
-        //  this.productImage1 = this.productDetail.productPhotos[0];
-        //  this.productImage2 = this.productDetail.productPhotos[1];
-         this.productDetails = data;
-         console.log(this.productDetails);
-        }
-     )
+  this.actRoute.data.subscribe((res) => {
+    this.productDetail = res.products[0];
+            this.productImage1 = this.productDetail.productPhotos[0];
+           this.productImage2 = this.productDetail.productPhotos[1];
+           this.productDetails = res.products;
+           console.log(this.productDetail.productPhotos[0]);
+            console.log(this.productDetails);
+  })
   }
 
   ngOnInit() {
+    console.log('component initiated');
     this.getRender();
+
   }
 
 }
