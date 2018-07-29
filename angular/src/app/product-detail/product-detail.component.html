@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="col-lg-12">
+      <div class="col-lg-5">
+        <div class="col-lg-3">
+          <div *ngFor="let image of productDetail?.productPhotos" class="img-list">
+              <img [src]="image" (click)="selectImage(image)" alt="banner" class="img-responsive banner">
+          </div>
+        </div>
+        <div class="col-lg-9">
+              <img [src]="banner || productDetail?.productPhotos[0]" alt="banner" class="img-responsive img-view">
+        </div>
+            </div>
+    <div class="col-lg-7">
+      <div>{{productDetail?.product}}</div>
+      <div>{{productDetail?.color}}</div>
+      <div>{{productDetail?.productMaterial}}</div>
+      <div>{{productDetail?.description}}</div>
+      <div>{{productDetail?.price}}</div>
+
+    </div>
+  </div>
+</div>

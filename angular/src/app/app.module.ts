@@ -1,36 +1,37 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'
-
+import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { FooterComponent } from './footer/footer.component';
-import { TopbarComponent } from './topbar/topbar.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-//import { ProductListComponent } from './product-list/product-list.component';
-
-
-import { AppRoutingModule } from './app-routing.module';
-import { ProductListModule } from './product-list/product-list.module';
-
 import { SafeTrustUrlPipe } from './pipes/safe-trust-url.pipe';
+import { ProductsComponent } from './products/products.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ProductListComponent } from './product-list/product-list.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { DataSharingService } from './services/data-sharing.service';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    TopbarComponent,
-    NavbarComponent,
-    FooterComponent,
     SafeTrustUrlPipe,
-    PageNotFoundComponent
-    /*ProductListComponent*/
+    ProductsComponent,
+    ProductListComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
-    ProductListModule,
-    AppRoutingModule
-   
+    RouterModule.forRoot([
+      { path: 'products', component: ProductsComponent},
+      { path: 'category/product-list/product-detail/:id', component: ProductDetailComponent },
+      { path: 'category/product-list', component: ProductListComponent },
+      { path: '', redirectTo: '/products', pathMatch: 'full' },
+      // { path: '**', component: ProductsComponent }
+      
+    ]),
+   HttpClientModule,
   ],
+  providers: [ DataSharingService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductListService } from './product-list.service';
-import { ActivatedRoute } from '@angular/router';
+import { DataSharingService } from '../services/data-sharing.service';
 
 @Component({
   selector: 'app-product-list',
@@ -9,28 +8,19 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductListComponent implements OnInit {
 
-  constructor(private products: ProductListService, private actRoute: ActivatedRoute) { }
-  
-  productDetail:any;
-  productImage1:any;
-  productImage2:any;
-  productDetails:any;
+  constructor(private dataShare: DataSharingService) { }
+  productList:any;
 
-  getRender() {
-  this.actRoute.data.subscribe((res) => {
-    this.productDetail = res.products[0];
-            this.productImage1 = this.productDetail.productPhotos[0];
-           this.productImage2 = this.productDetail.productPhotos[1];
-           this.productDetails = res.products;
-           console.log(this.productDetail.productPhotos[0]);
-            console.log(this.productDetails);
-  })
+  getProductList() {
+    this.dataShare.productList.subscribe(
+      data => {
+      this.productList = data
+      console.log(data);
+      }
+    )
   }
-
   ngOnInit() {
-    console.log('component initiated');
-    this.getRender();
-
+    this.getProductList();
   }
 
 }

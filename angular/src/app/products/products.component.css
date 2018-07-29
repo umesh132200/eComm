@@ -1,0 +1,41 @@
+.container {
+    margin-top: 20px;
+}
+.product-slide {
+    height: 220px;
+}
+.product-view {
+    background-color: white;
+    height: 100%;
+    border: 1px solid gainsboro;
+    padding-left: 0;
+    padding-right: 0;
+}
+.carousel-control {
+    position: absolute;
+    top: 60px;
+    bottom: 70px;
+    margin: 0px 15px;
+    width: 5%;
+}
+.carousel-control.right,.carousel-control.left {
+    background-image: none;
+}
+.view-all {
+    margin-top: -7px;
+}
+.carousel-panel {
+    padding: 0px 32px;
+}
+.panel-body {
+    padding: 0;
+}
+
+#myCarouselSlide > div > div.item.active > div {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.product-banner {
+    height: 180px;
+}
